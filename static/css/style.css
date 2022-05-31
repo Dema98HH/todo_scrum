@@ -1,14 +1,10 @@
 body{
     background-color: white;
+    fonts-color: black;
 }
 
-h1{
+h3{
     color: black;
 }
 
-.row {
-  -webkit-flex-direction: row;  /* Safari */
-  flex-direction:  row;
-  height: 200px;
 
-}

@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center border" style="padding: 50px;">
+    <form method="POST" action="">
+      {% csrf_token %}
+      <p>Are you sure you want to delete "{{obj}}"?</p>
+
+      <a href="{{request.META.HTTP_REFERER}}">Go Back</a>
+      <button type="button" class="btn btn-outline-success">Confirm</button>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}
