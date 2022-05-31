@@ -9,13 +9,21 @@
 
 
 <div class="container">
-    <div class="row d-flex justify-content-center">
+    <div class="row">
     {% for room in rooms %}
-        <div class="col-lg-3 border" style="margin: 5px; height: 200px;">
-            <h3>{{ room.name }}</h3>
+        <div class="col-lg-3" style="height: 200px; padding: 5px;">
+            <div class="border" style="padding: 8px; height: 100%;">
+            <h3><a href="{% url 'rooms' room.id %}">{{room.name}}</a></h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
         </div>
     {% endfor %}
+        <div class="col-lg-3" style="height: 200px; padding: 5px;">
+            <div class="border" style="padding: 8px; height: 100%;">
+                <h3><a href="{% url 'create-room' %}">Create new room</a></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
 
 
     </div>
