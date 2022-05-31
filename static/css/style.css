@@ -1,7 +1,14 @@
 body{
-    background-color: gray;
+    background-color: white;
 }
 
 h1{
     color: black;
+}
+
+.row {
+  -webkit-flex-direction: row;  /* Safari */
+  flex-direction:  row;
+  height: 200px;
+
 }

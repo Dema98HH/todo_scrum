@@ -3,6 +3,37 @@
 
 {% block content %}
 
-<h1>Home</h1>
+<!--{% for room in rooms %}-->
+<!--    {{ room.name }}-->
+<!--{% endfor %}-->
+
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+    {% for room in rooms %}
+        <div class="col-lg-3 border" style="margin: 5px; height: 200px;">
+            <h3>{{ room.name }}</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+    {% endfor %}
+
+
+    </div>
+</div>
+
+<!--<div class="container">-->
+<!--    <div class="d-flex align-content-end flex-wrap" style="background-color: rgba(255,0,0,0.1);">-->
+<!--        {% for room in rooms %}-->
+<!--        <div class="border d-flex justify-content-center" style="height: 120px; width: 25%;">-->
+<!--            <div style="background-color: red;" class="position relative">-->
+<!--                <div class="position-absolute top-50 start-50">-->
+<!--                    {{ room.name }}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
+<!--</div>-->
+
 
 {% endblock content %}
