@@ -9,8 +9,18 @@
     {{ rooms2.name }}
         <hr>
         {{ rooms2.description }}
+        <hr>
+        <div>
+            <div>
+                <medium>Members: {{rooms2.participants.count}}</medium>
+            </div>
+            <hr>
+            {% for participant in rooms2.participants.all %}
+                <p>@{{ participant }} </p>
+            {% endfor %}
+        </div>
 
-</div>
+    </div>
 </div>
 
 

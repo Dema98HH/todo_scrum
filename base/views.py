@@ -13,7 +13,13 @@ def home(request):
 
 def roomsView(request, pk):
     rooms2 = Room.objects.get(id=pk)
-    context = {'rooms2': rooms2}
+    participants = rooms2.participants.all() # rooms2 > room ?
+
+
+
+
+
+    context = {'rooms2': rooms2, 'participants': participants}
     return render(request, 'base/rooms.html', context)
 
 
