@@ -13,11 +13,6 @@
             <hr>
             {{ rooms2.description }}
             <hr>
-
-
-
-
-
         </div>
 
 
@@ -28,7 +23,7 @@
                 </div>
                 <hr>
                 {% for participant in rooms2.participants.all %}
-                    <p>@{{ participant }} </p>
+                <p><a href="#">@{{ participant }}</a></p>
                 {% endfor %}
                 <a href="{% url 'update-room_2' rooms2.id %}">Add/Delete Member</a>
             </div>
