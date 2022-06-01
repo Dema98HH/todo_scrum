@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, CheckboxSelectMultiple
 from .models import Room, User
 
 class RoomForm(ModelForm):
@@ -10,6 +10,9 @@ class RoomForm_2(ModelForm):
     class Meta:
         model = Room
         fields = ['participants']
+        widgets = {
+            'participants': CheckboxSelectMultiple()
+        }
         # model = User
         # fields = '__all__'
 
