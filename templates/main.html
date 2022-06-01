@@ -9,26 +9,60 @@
     <title>Title</title>
 </head>
 <body>
+
   <div class="container">
-      <div class="row"></div>
-      <div class="justify-content-center">
-          <div class="col-12 d-flex justify-content-center border-bottom">
-              <h1><a href="/">Main</a></h1>
+      <div class="row">
+
+          <div class="col-12" style="height: 50px; padding: 0px;">
+              <div class="row">
+                  <div class="col-2" style="height: 50px;"></div>
+                  <div class="col-10" style="height: 50px;"></div>
+              </div>
           </div>
-          <div class="col-2 d-flex justify-content-center mt-2">
-              {% if request.user.is_authenticated %}
-            <div style="float: right;">
-                {{ request.user }}
-            </div>
-                <a href="{% url 'logout' %}">Logout</a>
-                {% else %}
-                <a href="{% url 'login' %}">Login</a>
-                {% endif %}
+
+          <div class="col-12 border-bottom" style="height: 50px; padding: 0px;">
+              <div class="row">
+                    <div class="col-2 d-flex flex-row justify-content-center align-items-center" style="height: 50px;">
+                        {% if request.user.is_authenticated %}
+                            <a href="{% url 'logout' %}">Logout</a>
+                        {% else %}
+                            <a href="{% url 'login' %}">Login</a>
+                        {% endif %}
+                    </div>
+                    <div class="col-8" style="height: 50px;"></div>
+                    <div class="col-2 d-flex flex-row justify-content-center align-items-center" style="height: 50px;">
+                        {% if request.user.is_authenticated %}
+                            <div>
+                                <medium style="font-weight: bold; color: red;">{{ request.user }}</medium>
+                            </div>
+                        {% endif %}
+                    </div>
+              </div>
           </div>
-      </div>
+
+          <div class="col-12" style="height: 40px;"></div>
       </div>
   </div>
-  <hr>
+
+
+<!--      <div class="justify-content-center">-->
+<!--          <div class="col-12 d-flex justify-content-center border-bottom">-->
+<!--              <h1><a href="/">Main</a></h1>-->
+<!--          </div>-->
+<!--          <div class="col-2 d-flex justify-content-center mt-2">-->
+<!--              {% if request.user.is_authenticated %}-->
+<!--            <div style="float: right;">-->
+<!--                {{ request.user }}-->
+<!--            </div>-->
+<!--                <a href="{% url 'logout' %}">Logout</a>-->
+<!--                {% else %}-->
+<!--                <a href="{% url 'login' %}">Login</a>-->
+<!--                {% endif %}-->
+<!--          </div>-->
+<!--      </div>-->
+<!--      </div>-->
+<!--  </div>-->
+<!--  <hr>-->
 
   {% block content %}
 
