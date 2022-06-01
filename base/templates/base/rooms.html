@@ -30,7 +30,7 @@
                 {% for participant in rooms2.participants.all %}
                     <p>@{{ participant }} </p>
                 {% endfor %}
-                <a href="#">Add Member</a>
+                <a href="{% url 'update-room_2' rooms2.id %}">Add Member</a>
             </div>
         </div>
 

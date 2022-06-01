@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from .models import Room, Topic
-from .forms import RoomForm
+from .forms import RoomForm, RoomForm_2
 # Create your views here.
 
 
@@ -118,6 +118,28 @@ def updateRoom(request, pk):
 
     context = {'form': form}
     return render(request, 'base/room_form.html', context)
+
+
+
+
+def updateRoom_2(request, pk):
+    room = Room.objects.get(id=pk)
+    form = RoomForm_2(instance=room)
+
+    if request.user != room.host:
+        return HttpResponse('You are not allowed here!')
+
+    if request.method == 'POST':
+        form = RoomForm_2(request.POST, instance=room)
+        if form.is_valid():
+            form.save()
+            return redirect('rooms', room.pk)
+
+    context = {'form': form}
+    return render(request, 'base/room_form.html', context)
+
+
+
 
 #-------------------------------------------------Delete room
 def deleteRoom(request, pk):
