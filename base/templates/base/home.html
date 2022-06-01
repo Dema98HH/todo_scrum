@@ -15,11 +15,18 @@
         <div class="col-lg-3 col-md-6 justify-content-center" style="height: 200px; padding: 5px;">
             <div class="border justify-content-center" style="padding: 8px; height: 100%;">
                 <h3><a class="text-dark" href="{% url 'rooms' room.id %}">{{room.name}}</a></h3>
-                <small>@{{room.host}}</small>
+                <small style="font-weight: bold;">@{{room.host}}</small>
+                <div class="justify-content-center">
+                    <small>Members: {{room.participants.count}}</small>
+                </div>
                 {% if request.user == room.host %}
-                <div class="d-flex justify-content-center">
-                    <medium class="mr-3 mt-3"><a style="color: grey;" href="{% url 'update-room' room.id %}">Update</a></medium>
-                    <medium class="ml-3 mt-3"><a style="color: grey;"href="{% url 'delete-room' room.id %}">Delete</a></medium>
+                <div class="d-flex justify-content-center mt-5">
+                    <div>
+                        <medium class="mr-3 mt-3"><a style="color: grey;" href="{% url 'update-room' room.id %}">Update</a></medium>
+                    </div>
+                    <div>
+                        <medium class="ml-3 mt-3"><a style="color: grey;"href="{% url 'delete-room' room.id %}">Delete</a></medium>
+                    </div>
                 </div>
 <!--                <p><a href="{% url 'update-room' room.id %}">Update Room</a></p>-->
 <!--                <p><a href="{% url 'delete-room' room.id %}">Delete Room</a></p>-->
