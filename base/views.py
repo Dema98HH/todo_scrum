@@ -70,9 +70,21 @@ def registerPage(request):
 
 
 def home(request):
+
+    form = RoomForm()
+
+    if request.method == 'POST':
+
+        form = RoomForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home') #name in the URLs
+
+    # context = {'form': form}
+
     topics = Topic.objects.all()
     rooms = Room.objects.all()
-    context = {'rooms': rooms, 'topics': topics}
+    context = {'rooms': rooms, 'topics': topics, 'form': form}
     return render(request, 'base/home.html', context)
 
 
