@@ -11,36 +11,51 @@
 <div class="container">
     <div class="row">
 
-    {% for room in rooms %}
-        <div class="col-lg-3 col-md-6 justify-content-center" style="height: 200px; padding: 5px;">
-            <div class="border justify-content-center" style="padding: 8px; height: 100%;">
-                <h3><a class="text-dark" href="{% url 'rooms' room.id %}">{{room.name}}</a></h3>
-                <small style="font-weight: bold;">@{{room.host}}</small>
-                <div class="justify-content-center">
-                    <small>Members: {{room.participants.count}}</small>
-                </div>
-                {% if request.user == room.host %}
-                <div class="d-flex justify-content-center mt-5">
-                    <div>
-                        <medium class="mr-3 mt-3"><a style="color: grey;" href="{% url 'update-room' room.id %}">Update</a></medium>
-                    </div>
-                    <div>
-                        <medium class="ml-3 mt-3"><a style="color: grey;"href="{% url 'delete-room' room.id %}">Delete</a></medium>
-                    </div>
-                </div>
-<!--                <p><a href="{% url 'update-room' room.id %}">Update Room</a></p>-->
-<!--                <p><a href="{% url 'delete-room' room.id %}">Delete Room</a></p>-->
-                {% endif %}
-            </div>
-        </div>
-    {% endfor %}
+        {% for room in rooms %}
+        <div class="col-lg-3 col-md-6 border border" style="height: 200px; padding-bottom: 10px;">
 
-        <div class="col-lg-3 col-md-6" style="height: 200px; padding: 5px;">
-            <div class="border d-flex justify-content-center" style="padding: 8px; height: 100%; top: 50%;">
-                <medium class="mt-5"><a href="{% url 'create-room' %}">Create new room</a></medium>
-<!--                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>-->
+
+                <div class="row">
+
+                    <div class="col-12 d-flex align-items-center" style="height: 100px;">
+
+                        <div>
+                            <h5><a class="text-dark" href="{% url 'rooms' room.id %}">{{room.name}}</a></h5>
+                            <small style="font-weight: bold;">@{{room.host}}</small>
+                            <div class="justify-content-end">
+                                <small>Members: {{room.participants.count}}</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {% if request.user == room.host %}
+                    <div class="col-12  d-flex flex-row justify-content-center align-items-center" style="height: 100px;">
+
+                        <div>
+                            <medium class="mr-5 mt-4"><a style="color: grey;" href="{% url 'update-room' room.id %}">Update</a></medium>
+                        </div>
+                        <div>
+                            <medium class="ml-5 mt-4"><a style="color: grey;"href="{% url 'delete-room' room.id %}">Delete</a></medium>
+                        </div>
+
+                    </div>
+                    {% endif %}
+
+                </div>
+        </div>
+        {% endfor %}
+
+
+
+        <div class="col-3 border d-flex flex-row justify-content-center align-items-center" style="height: 200px;">
+            <div style="padding: 30px;" class="justify-content-center align-items-center">
+                        <h5><a href="{% url 'create-room' %}">Create new room</a></h5>
             </div>
         </div>
+
+
+
     </div>
 </div>
 
