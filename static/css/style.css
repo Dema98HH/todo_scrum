@@ -1,8 +1,10 @@
 body{
-    background-color: white;
     fonts-color: black;
 }
 
+a:link{
+    color: grey;
+}
 h3{
     color: black;
 }

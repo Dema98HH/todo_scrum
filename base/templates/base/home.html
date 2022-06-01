@@ -18,8 +18,8 @@
                 <small>@{{room.host}}</small>
                 {% if request.user == room.host %}
                 <div class="d-flex justify-content-center">
-                    <medium class="mr-3 mt-3"><a href="{% url 'update-room' room.id %}">Update</a></medium>
-                    <medium class="ml-3 mt-3"><a href="{% url 'delete-room' room.id %}">Delete</a></medium>
+                    <medium class="mr-3 mt-3"><a style="color: grey;" href="{% url 'update-room' room.id %}">Update</a></medium>
+                    <medium class="ml-3 mt-3"><a style="color: grey;"href="{% url 'delete-room' room.id %}">Delete</a></medium>
                 </div>
 <!--                <p><a href="{% url 'update-room' room.id %}">Update Room</a></p>-->
 <!--                <p><a href="{% url 'delete-room' room.id %}">Delete Room</a></p>-->
