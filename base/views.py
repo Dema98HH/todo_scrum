@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from .models import Room, Topic
+from .models import Room, Topic, Task
 from .forms import RoomForm, RoomForm_2
 # Create your views here.
 
@@ -88,15 +88,16 @@ def home(request):
     return render(request, 'base/home.html', context)
 
 
-def roomsView(request, pk):
-    rooms2 = Room.objects.get(id=pk)
+def roomsView(request, rom_id):
+    rooms2 = Room.objects.get(id=rom_id)
+    tasks = Task.objects.filter(hostroom_id=rom_id)
     participants = rooms2.participants.all() # rooms2 > room ?
 
 
 
 
 
-    context = {'rooms2': rooms2, 'participants': participants}
+    context = {'rooms2': rooms2, 'participants': participants, 'tasks': tasks}
     return render(request, 'base/rooms.html', context)
 
 

@@ -17,9 +17,17 @@
 
         <div class="col-10 border ">
             <div class="row">
-                <div class="col-12 border" style="height: 30px;"></div> <!-- # !!!-->
-                <div class="col-12 border" style="height: 30px;"></div>
+                <div class="col-12 border" style="height: 30px;">
+                </div> <!-- # !!!-->
+<!--                <div class="col-12 border" style="height: 30px;"></div>-->
+                <div class="col-12" style="height: 30px;">
+                    {% for task in tasks %}
+                        <h1>{{task.name}}</h1>
+                        {{task.body}}
+                    {% endfor %}
+                </div>
             </div>
+
 
         </div>
 

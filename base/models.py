@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django import forms
 # from models import *
 # from django.forms import *
-
+from django.urls import reverse
 
 class Topic(models.Model):
     name = models.CharField(max_length=200)
@@ -30,6 +30,9 @@ class Room(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('roomm', kwargs={'rom_id': self.pk})
 
 
 class Task(models.Model):
