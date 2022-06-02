@@ -1,5 +1,5 @@
 from django.forms import ModelForm, CheckboxSelectMultiple
-from .models import Room, User
+from .models import Room, User, Task
 
 class RoomForm(ModelForm):
     class Meta:
@@ -16,6 +16,14 @@ class RoomForm_2(ModelForm):
         # model = User
         # fields = '__all__'
 
+
+# class TasksForm(ModelForm):
+#     class Meta:
+#         model = Task
+#         fields = ['finish']
+#         widgets = {
+#             'finish': CheckboxSelectMultiple()
+#         }
 # class RoomForm(ModelForm):
 #     class Meta:
 #         model = Room
