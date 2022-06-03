@@ -72,7 +72,7 @@ def registerPage(request):
 def home(request):
 
     form = RoomForm()
-
+    data = Task.objects.all()
     if request.method == 'POST':
 
         form = RoomForm(request.POST)
@@ -84,7 +84,7 @@ def home(request):
 
     topics = Topic.objects.all()
     rooms = Room.objects.all()
-    context = {'rooms': rooms, 'topics': topics, 'form': form}
+    context = {'rooms': rooms, 'topics': topics, 'form': form, 'data': data}
     return render(request, 'base/home.html', context)
 
 
@@ -167,3 +167,19 @@ def deleteRoom(request, pk):
     return render(request, 'base/deleteRoom.html', {'obj': room})
 
 
+def Delete(request, id=None):
+    Task.objects.get(id=id).delete()
+    return redirect('home')
+
+def Complete(request, id=None):
+    data = Task.objects.get(id=id)
+    data.finish = True
+    data.save()
+
+    return redirect('home')
+
+def InComplete(request, id=None):
+    data = Task.objects.get(id=id)
+    data.complete = False
+    data.save()
+    return redirect('home')
