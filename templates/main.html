@@ -36,7 +36,7 @@
                     <div class="col-2 d-flex flex-row justify-content-center align-items-center" style="height: 50px;">
                         {% if request.user.is_authenticated %}
                             <div>
-                                <medium style="font-weight: bold; color: red;">{{ request.user }}</medium>
+                                <a href="{% url 'userinfo' request.user.id %}"><medium style="font-weight: bold; color: red;">{{ request.user }}</medium></a>
                             </div>
                         {% endif %}
                     </div>

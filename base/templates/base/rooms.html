@@ -61,7 +61,7 @@
                     <medium>Members: {{rooms2.participants.count}}</medium>
                 </div>
                 {% for participant in rooms2.participants.all %}
-                <p><a href="#">@{{ participant }}</a></p>
+                <p><a href="{% url 'userinfo' participant.id %}">@{{ participant }}</a></p>
                 {% endfor %}
                 <hr>
                 <a href="{% url 'update-room_2' rooms2.id %}">Add/Delete Member</a>

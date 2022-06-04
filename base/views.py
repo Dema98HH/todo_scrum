@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from .models import Room, Topic, Task
+from .models import Room, Topic, Task, User
 from .forms import RoomForm, RoomForm_2
 # Create your views here.
 
@@ -59,7 +59,11 @@ def registerPage(request):
      return render(request, 'base/login_register.html', {'form': form})
 
 
+def userInfo(request, pk):
+    userinfo = User.objects.get(id=pk)
+    context = {'userinfo': userinfo}
 
+    return render(request, 'base/userInf.html', context)
 
 
 
@@ -165,21 +169,3 @@ def deleteRoom(request, pk):
         room.delete()
         return redirect('home')
     return render(request, 'base/deleteRoom.html', {'obj': room})
-
-
-def Delete(request, id=None):
-    Task.objects.get(id=id).delete()
-    return redirect('home')
-
-def Complete(request, id=None):
-    data = Task.objects.get(id=id)
-    data.finish = True
-    data.save()
-
-    return redirect('home')
-
-def InComplete(request, id=None):
-    data = Task.objects.get(id=id)
-    data.complete = False
-    data.save()
-    return redirect('home')

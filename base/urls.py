@@ -13,7 +13,5 @@ urlpatterns = [
     path('update-room/<str:pk>/', views.updateRoom, name='update-room'),
     path('update-room_2/<str:pk>/part', views.updateRoom_2, name='update-room_2'),
     path('delete-room/<str:pk>/', views.deleteRoom, name='delete-room'),
-    path('delete/<int:id>', views.Delete, name='Delete'),
-    path('uncomplete/<int:id>', views.InComplete, name='InComplete'),
-    path('complete/<int:id>', views.Complete, name='Complete'),
+    path('user-info/<str:pk>/', views.userInfo, name='userinfo'),
 ]
