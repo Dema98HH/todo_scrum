@@ -169,3 +169,22 @@ def deleteRoom(request, pk):
         room.delete()
         return redirect('home')
     return render(request, 'base/deleteRoom.html', {'obj': room})
+
+# test
+
+def Delete(request, id=None):
+    Task.objects.get(id=id).delete()
+    return redirect('home')
+
+def Complete(request, id=None):
+    data = Task.objects.get(id=id)
+    data.finish = True
+    data.save()
+
+    return redirect('home')
+
+def InComplete(request, id=None):
+    data = Task.objects.get(id=id)
+    data.complete = False
+    data.save()
+    return redirect('home')
