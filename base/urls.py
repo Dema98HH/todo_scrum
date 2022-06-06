@@ -1,5 +1,6 @@
 from . import views
 from django.urls import path
+from .views import *
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -14,6 +15,7 @@ urlpatterns = [
     path('update-room_2/<str:pk>/part', views.updateRoom_2, name='update-room_2'),
     path('delete-room/<str:pk>/', views.deleteRoom, name='delete-room'),
     path('user-info/<str:pk>/', views.userInfo, name='userinfo'),
+    path('tasks/<str:pk>/completed/', views.postTask, name='task_complete_url'),
     # test
     # path('delete/<int:id>', views.Delete, name='Delete'),
     # path('uncomplete/<int:id>', views.InComplete, name='InComplete'),

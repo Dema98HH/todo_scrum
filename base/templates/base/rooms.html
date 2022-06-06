@@ -38,7 +38,7 @@
         {% for task in tasks %}
 
 
-         <div class="list-group-item list-group-item-light mt-2">
+         <div class="list-group-item list-group-item-light mt-2" data-id="{{ task.id }}" id="taskCard" style="{% if task.finish %} text-decoration: line-through {% endif %}">
 
             {{task.name}}
 

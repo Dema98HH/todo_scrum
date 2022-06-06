@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from django.views import View
+
 from .models import Room, Topic, Task, User
 from .forms import RoomForm, RoomForm_2, TaskForm
 from django.http import JsonResponse
@@ -115,6 +117,16 @@ def roomsView(request, rom_id):
     return render(request, 'base/rooms.html', context)
 
 
+
+
+
+# class TaskComplete(View):
+def postTask(request, pk):
+
+    task = Task.objects.get(id=pk)
+    task.finish = True
+    task.save()
+    return JsonResponse({'task': model_to_dict(task)}, status=200)
 #-------------------------------------------------Create room
 def createRoom(request):
     form = RoomForm()
