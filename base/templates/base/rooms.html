@@ -11,8 +11,8 @@
                     <h1>{{rooms2.name}}</h1>
         </div>
         </div>
-    </div>
 </div>
+
 <!--<form method="post">-->
 <!--    {% csrf_token %}-->
 <!--    <div class="container mt-5">-->
@@ -26,37 +26,31 @@
 
 <div class="container">
     <div class="row">
-    <ul class="list-group col-10">
+    <div class="list-group col-10">
 
-        <li class="list-group-item list-group-item-light mt-2 p-2 d-flex justify-content-center">
+        <div class="list-group-item list-group-item-light mt-2 p-2 d-flex justify-content-center">
 <!--            <a href="#"><medium>New Task</medium></a>-->
             <a href="" data-toggle="modal" data-target="#modalCreateTask">New task</a>
 
-        </li>
+        </div>
 
-        {% for i in tasks %}
-        <li class="list-group-item list-group-item-light mt-2">
-            {% if i.finish %}
-            <strike>{{i.name}}</strike>
-            {% elif i.finish != 'True' %}
-            {{i.name}}
-            {% endif %}
-            <a href="{% url 'Delete' i.id %}">
-                <button type="button" class="btn btn-danger float-right">Delete</button>
-            </a>
-            {% if i.finish %}
-            <a href="{% url 'InComplete' i.id %}">
-                <button type="button" class="btn btn-success float-right mr-2">Completed</button>
-            </a>
-            {% elif i.finish != 'True' %}
-            <a href="{% url 'Complete' i.id %}">
-                <button type="button" class="btn btn-success float-right mr-2">Complete</button>
-            </a>
-            {% endif %}
-        </li>
+        <div id="taskList">
+        {% for task in tasks %}
+
+
+         <div class="list-group-item list-group-item-light mt-2">
+
+            {{task.name}}
+
+                <button type="button" class="close float-right mr-2">
+                    <span aria-hidden="true">&times;</span>
+
+                </button>
+        </div>
         {% endfor %}
+        </div>
 
-    </ul>
+    </div>
 
 
         <div class="col-2 border-top border-left pb-3">
@@ -97,26 +91,26 @@
 
 
 
-
+<!--add task form-->
 <div class="modal" tabindex="-1" role="dialog" id="modalCreateTask">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Create new room</h5>
+        <h5 class="modal-title">Create new task</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-            <form method="POST" action="">
+          <form method="POST" action="" id="createTaskForm" data-url="{% url 'rooms' rooms2.id %}">
               {% csrf_token %}
               {{ form|crispy }}
-            <input type="Submit" value="Submit"/>
+            <button type="button" id="createButton" data-dismiss="modal">Create</button>
     </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
       </div>
     </div>
   </div>

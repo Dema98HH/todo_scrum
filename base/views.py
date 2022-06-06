@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from .models import Room, Topic, Task, User
 from .forms import RoomForm, RoomForm_2, TaskForm
+from django.http import JsonResponse
+from django.forms.models import model_to_dict
+
 # Create your views here.
 
 
@@ -103,8 +106,8 @@ def roomsView(request, rom_id):
 
         form = TaskForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('home')  # name in the URLs
+            new_task = form.save()
+            return JsonResponse({'task': model_to_dict(new_task)}, status=200)
 
 
 
@@ -179,19 +182,19 @@ def deleteRoom(request, pk):
 
 # test
 
-def Delete(request, id=None):
-    Task.objects.get(id=id).delete()
-    return redirect('home')
-
-def Complete(request, id=None):
-    data = Task.objects.get(id=id)
-    data.finish = True
-    data.save()
-
-    return redirect('home')
-
-def InComplete(request, id=None):
-    data = Task.objects.get(id=id)
-    data.complete = False
-    data.save()
-    return redirect('home')
+# def Delete(request, id=None):
+#     Task.objects.get(id=id).delete()
+#     return redirect('home')
+#
+# def Complete(request, id=None):
+#     data = Task.objects.get(id=id)
+#     data.finish = True
+#     data.save()
+#
+#     return redirect('home')
+#
+# def InComplete(request, id=None):
+#     data = Task.objects.get(id=id)
+#     data.complete = False
+#     data.save()
+#     return redirect('home')

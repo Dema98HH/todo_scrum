@@ -15,7 +15,7 @@ urlpatterns = [
     path('delete-room/<str:pk>/', views.deleteRoom, name='delete-room'),
     path('user-info/<str:pk>/', views.userInfo, name='userinfo'),
     # test
-    path('delete/<int:id>', views.Delete, name='Delete'),
-    path('uncomplete/<int:id>', views.InComplete, name='InComplete'),
-    path('complete/<int:id>', views.Complete, name='Complete'),
+    # path('delete/<int:id>', views.Delete, name='Delete'),
+    # path('uncomplete/<int:id>', views.InComplete, name='InComplete'),
+    # path('complete/<int:id>', views.Complete, name='Complete'),
 ]
