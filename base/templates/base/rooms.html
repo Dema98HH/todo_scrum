@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 {% load static %}
 
-
+{% load crispy_forms_tags %}
 {% block content %}
 
 <div class="text-center">
@@ -29,7 +29,9 @@
     <ul class="list-group col-10">
 
         <li class="list-group-item list-group-item-light mt-2 p-2 d-flex justify-content-center">
-            <a href="#"><medium>New Task</medium></a>
+<!--            <a href="#"><medium>New Task</medium></a>-->
+            <a href="" data-toggle="modal" data-target="#modalCreateTask">New task</a>
+
         </li>
 
         {% for i in tasks %}
@@ -93,6 +95,32 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+
+
+
+<div class="modal" tabindex="-1" role="dialog" id="modalCreateTask">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create new room</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form method="POST" action="">
+              {% csrf_token %}
+              {{ form|crispy }}
+            <input type="Submit" value="Submit"/>
+    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!--<div class="container">-->
 

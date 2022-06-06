@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from .models import Room, Topic, Task, User
-from .forms import RoomForm, RoomForm_2
+from .forms import RoomForm, RoomForm_2, TaskForm
 # Create your views here.
 
 
@@ -97,11 +97,18 @@ def roomsView(request, rom_id):
     tasks = Task.objects.filter(hostroom_id=rom_id)
     participants = rooms2.participants.all() # rooms2 > room ?
 
+    form = TaskForm()
+
+    if request.method == 'POST':
+
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # name in the URLs
 
 
 
-
-    context = {'rooms2': rooms2, 'participants': participants, 'tasks': tasks}
+    context = {'rooms2': rooms2, 'participants': participants, 'tasks': tasks, 'form':form}
     return render(request, 'base/rooms.html', context)
 
 

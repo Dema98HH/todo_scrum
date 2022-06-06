@@ -17,6 +17,11 @@ class RoomForm_2(ModelForm):
         # fields = '__all__'
 
 
+class TaskForm(ModelForm):
+    class Meta:
+        model = Task
+        fields = '__all__'
+
 # class TasksForm(ModelForm):
 #     class Meta:
 #         model = Task
